@@ -53,7 +53,7 @@ def check_editor(ctx):
 def reviews(ctx):
     """Copy reviews to content"""
     with ctx.cd(ROOT_DIR):
-        ctx.run("cp -r {} {}".format(REVIEW_SOURCE_DIR, CONTENT_DIR))
+        ctx.run("rsync -a {} {} --delete".format(REVIEW_SOURCE_DIR, CONTENT_DIR))
 
 @task(pre=[check_zola])
 def build(ctx):
